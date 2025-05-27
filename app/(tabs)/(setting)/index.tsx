@@ -41,11 +41,6 @@ const MyPageIndex = () => {
           </Pressable>
         </View>
 
-        <Pressable className="bg-green-500 w-full mt-6 items-center rounded-md" onPress={handleLogout}>
-          <Text className="w-full text-base font-bold text-white px-3 py-4 text-center">
-            로그아웃
-          </Text>
-        </Pressable>
       </View>
     </PageLayout>
   );

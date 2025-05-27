@@ -105,28 +105,51 @@ export default function ProfilePage() {
   }
 
   return (
-    <View className="flex-1 bg-white px-6 pt-12">
+    <View className="flex-1 bg-[#F3F4F6] px-6 pt-14">
+    {/* 타이틀 */}
+    <Text className="text-2xl font-bold text-center text-green-700 mb-6">
+      PROFILE
+    </Text>
+
+    {/* 프로필 카드 */}
+    <View className="bg-white rounded-2xl shadow-lg px-6 py-8 items-center mb-6">
       {/* 프로필 이미지 */}
-      <View className="items-center mb-8">
-        {!loading && (
-          <SetProfileImage imageUrl={getProfileImageUrl()} onChange={handleImageChange} />
-        )}
-      </View>
+      {!loading && (
+        <SetProfileImage imageUrl={getProfileImageUrl()} onChange={handleImageChange} />
+      )}
 
-      {/* 프로필 정보 */}
-      <View>
-        <Text className="text-center mb-2 text-lg">{loginInfo.name}님 환영합니다</Text>
-        <Text className="text-center mb-2 text-lg">아이디 : {loginInfo.loginId}</Text>
-        <Text className="text-center mb-2 text-lg">연락처: {loginInfo.tell}</Text>
-        <Text className="text-center mb-2 text-lg">email: {loginInfo.email}</Text>
-      </View>
+      {/* 이름 */}
+      <Text className="text-xl font-semibold text-gray-800 mt-4 mb-1">
+        {loginInfo.name} 님 
+      </Text>
 
-      {/* 로그아웃 버튼 */}
-      <View className="mt-6 items-center">
-        <Pressable onPress={handleLogout}>
-          <Text className="font-bold text-lg text-red-500">Logout</Text>
-        </Pressable>
+      {/* 라벨 */}
+      <Text className="text-sm text-gray-500 mb-4">스마트팜 관리자</Text>
+
+      {/* 정보 목록 */}
+      <View className="w-full space-y-3">
+        <View className="flex-row justify-between border-b border-gray-200 pb-2">
+          <Text className="text-gray-500 font-medium">아이디</Text>
+          <Text className="text-gray-800">{loginInfo.loginId}</Text>
+        </View>
+        <View className="flex-row justify-between border-b border-gray-200 pb-2">
+          <Text className="text-gray-500 font-medium">연락처</Text>
+          <Text className="text-gray-800">{loginInfo.tell}</Text>
+        </View>
+        <View className="flex-row justify-between">
+          <Text className="text-gray-500 font-medium">이메일</Text>
+          <Text className="text-gray-800">{loginInfo.email}</Text>
+        </View>
       </View>
     </View>
+
+    {/* 로그아웃 버튼 */}
+    <Pressable
+      onPress={handleLogout}
+      className="bg-green-600 rounded-xl py-3 shadow-md active:opacity-80"
+    >
+      <Text className="text-white text-lg font-bold text-center">로그아웃</Text>
+    </Pressable>
+  </View>
   );
 }
